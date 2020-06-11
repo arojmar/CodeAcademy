@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="Alfonso Rojo" />
+	<title>Videojuegos</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" 
+		integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/custom.css">
+	<script type="text/javascript" src="js/classes/Videogame.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/manageVideogame.js" charset="utf-8"></script>
+	<script>
+		var gamesLibrary = [];
+		var currentGameId = null;
+	</script>
+</head>
+<body>
+	<main class="container mt-5">
+		<h1 class="text-center">
+			Videojuegos
+			<span><button type="button" class="btn btn-primary" onclick="loadData();">Load</button></span>
+			<span><button type="button" class="btn btn-warning" onclick="resetData();">Reset</button></span>
+		</h1>
+		<section id="form-section" class="container mt-5 d-flex justify-content-center align-items-center">
+			<form class="bg-secondary p-3 rounded w-50">
+				<div class="form-group col text-light font-weight-bold">
+					<label for="name">Nombre</label>
+					<input type="text" class="form-control" id="name"
+						placeholder="Nombre del juego" onclick="restoreStatus('name');">
+				</div>
+				<div class="form-group col text-light font-weight-bold">
+					<label for="price">Precio</label>
+					<input type="text" class="form-control" id="price"
+						placeholder="Precio Videojuego" onclick="restoreStatus('price');">
+				</div>
+				<div class="form-group col text-light font-weight-bold">
+					<label for="videoconsole">Videoconsola</label>
+					<select id="videoconsole" class="form-control"
+						onclick="restoreStatus('videoconsole');">
+							<option selected>Selecciona...</option>
+							<option value="1">Xbox 360</option>
+							<option value="2">PlayStation 4</option>
+							<option value="3">Nintendo Switch</option>
+					</select>
+				</div>
+				<fieldset class="form-group col m-0">
+					<div class="row">
+					  <legend class="col-form-label col-sm-2 pt-0 text-light font-weight-bold">Género</legend>
+					  <div class="col-sm-10">
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="genre" 
+								id="genre" value="1" checked>
+							<label class="form-check-label text-light" for="genreAction">
+								Acción
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="genre"
+								id="genre" value="2">
+							<label class="form-check-label text-light" for="genrePlatform">
+								Plataforma
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="genre"
+								id="genre" value="3">
+							<label class="form-check-label text-light" for="genreFPS">
+								FPS
+							</label>
+						</div>
+					  </div>
+					</div>
+				</fieldset>
+				<div class="form-group col d-flex pt-3">
+					<div class="w-50 pr-2">
+						<button type="button" class="btn btn-info col font-weight-bold m-0" onclick="addVideoGame();">Enviar</button>
+					</div>
+					<div class="w-50 pl-2">
+						<button type="reset" class="btn btn-warning col font-weight-bold m-0">Limpiar</button>
+					</div>
+				</div>
+			</form>
+		</section>	
+		<section id="table-section" class="container">
+			<table class="table mt-5 table-striped bg-white">
+				<thead id="table-head" class="thead-dark justify-content-between" style="display: none;">
+					<tr>
+						<th scope="col" id="head-name" role="button" onclick="orderByName();">
+							<div class="d-flex justify-content-between align-items-center">
+								<span class="text-left">Nombre</span>
+								<i class="fas fa-sort-alpha-down" id="head-id-down"></i>
+								<i class="fas fa-sort-alpha-up" id="head-id-up" style="display: none;"></i>
+							</div>					
+						</th>
+						<th scope="col" id="head-price" role="button" onclick="orderBy('price');">
+							<div class="d-flex justify-content-between align-items-center">
+								<span class="text-left">Precio</span>
+								<i class="fas fa-sort-numeric-down" id="head-price-down"></i>
+								<i class="fas fa-sort-numeric-up" id="head-price-up" style="display: none;"></i>
+							</div>	
+						</th>
+						<th scope="col" id="head-videoconsole" role="button" onclick="orderBy('videoconsole');">
+							<div class="d-flex justify-content-between align-items-center">
+								<span class="text-left">Consola</span>
+								<i class="fas fa-sort-alpha-down" id="head-name-down"></i>
+								<i class="fas fa-sort-alpha-up" id="head-name-up" style="display: none;"></i>
+							</div>	
+						</th>
+						<th scope="col" id="head-genre" role="button" onclick="orderBy('genre');">
+							<div class="d-flex justify-content-between align-items-center">
+								<span class="text-left">Género</span>
+								<i class="fas fa-sort-alpha-down" id="head-genre-down"></i>
+								<i class="fas fa-sort-alpha-up" id="head-genre-up" style="display: none;"></i>
+							</div>	
+						</th>
+						<th scope="col" id="head-edit">
+							<div class="d-flex justify-content-between align-items-center col-2">
+								<span class="text-left" id="head-id">Opcion</span>
+							</div>	
+						</th>
+					</tr>
+				</thead>
+				<tbody id="table-tbody">
+
+				</tbody>
+			</table>
+		</section>
+	</main>
+		
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+</html>

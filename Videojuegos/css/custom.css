@@ -1,0 +1,21 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+  background: aliceblue;
+}
+
+main {
+	
+
+}
+
+.bg-rented {
+	background: powderblue!important;
+}
+
+.bg-sold {
+	background: PEACHPUFF!important;
+	color: CORAL;
+}
