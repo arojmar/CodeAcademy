@@ -71,13 +71,14 @@ function printGame(game){
 		
 	}
 	else {//PINTA SOLO
-		if (!currentGameId){
+		if (!currentGameId && 
+			game.getAvailability() != Videogame.AVAILABILITY_SOLD){
 			tdEdit.innerHTML = "<i class='fas fa-edit'></i>";
 			tdEdit.setAttribute('onclick', 'editGame("'+ game.id +'");');
+			tdEdit.setAttribute('role', 'button');
 		}
 		//añado el boton de edicion
 		tdEdit.setAttribute('class', 'text-center h3');
-		tdEdit.setAttribute('role', 'button');
 		tr.appendChild(tdEdit);
 		//añado la celda con el nombre
 		tdName.innerHTML = game.name;

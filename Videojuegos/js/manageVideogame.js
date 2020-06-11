@@ -119,25 +119,56 @@ function sellVideogame(id){
 }
 
 //TO-DO
-function orderByName(){
-	gamesLibrary.sort(
-		function(a, b){
- 			let result = a[1] > b[1] ? -1 : a[1] < b[1] ? 1 : 0;
+function orderByName(name){
+	let newLibrary = [];
+	let index = 0;
+	console.log(gamesLibrary);
+	switch(name){
+		case "head-name":
+			index = 1;
+			break;
+		case "head-price":
+			index = 2;
+			break;
+		case "head-videoconsole":
+			index = 3;
+			break;
+		case "head-genre":
+			index = 4;
+			break;
 	}
-	);
-	document.getElementById("head-id-down").style.display = "none";
-	document.getElementById("head-id-up").style.display = "";
+	
+	for (let i = 0; i < gamesLibrary.length; i++){
+			newLibrary[i] = gamesLibrary[i];
+	}
+	console.log(newLibrary);
+	
+	for (let i = 0; i < gamesLibrary.length; i++){
+		
+		gamesLibrary.sort(
+			function(a, b){
+				let result = 0;
+				if(gamesLibrary[i]["name"] < gamesLibrary[i+1]["name"]){
+					result = -1;
+				}
+				else if(gamesLibrary[i]["name"] > gamesLibrary[i+1]["name"]){
+					result = 1;
+			}});
+	}
+		console.log(gamesLibrary);
+	document.getElementById("" + name + "-down").style.display = "none";
+	document.getElementById("" + name + "-up").style.display = "";
 	printLibrary();
 }
 
-function orderByPrice(){
+function orderByNumber(name){
 	gamesLibrary.sort(
 		function(a, b){
  			let result = a[1] > b[1] ? -1 : a[1] < b[1] ? 1 : 0;
 	}
 	);
-	document.getElementById("head-id-down").style.display = "none";
-	document.getElementById("head-id-up").style.display = "";
+	document.getElementById("" + name + "-down").style.display = "none";
+	document.getElementById("" + name + "-up").style.display = "";
 	printLibrary();
 }
 
