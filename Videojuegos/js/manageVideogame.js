@@ -156,10 +156,148 @@ function printLibrary(){
 }
 
 function orderByName(){
-	
-	for (let game of gamesLibrary){
-		
+	gamesLibrary.sort(
+		function(a, b){
+ 			let result = a[1] > b[1] ? -1 : a[1] < b[1] ? 1 : 0;
 	}
+	);
+	document.getElementById("head-id-down").style.display = "none";
+	document.getElementById("head-id-up").style.display = "";
+	printLibrary();
 }
+
+function printGame(game){
+
+	let tr = document.createElement("tr");
+	tr.id = game.id;
+	if (game.getAvailability() == Videogame.AVAILABILITY_RENT){
+		tr.setAttribute("class", "text-primary bg-rented");		
+	}
+	if(game.getAvailability() == Videogame.AVAILABILITY_SOLD){
+		tr.setAttribute("class", "text-danger bg-sold");
+	}
+	
+	let tdName = document.createElement("th");
+	tdName.innerHTML = game.name;
+	tr.appendChild(tdName);
+	
+	let tdPrice = document.createElement("td");
+	tdPrice.innerHTML = game.price + "€";
+	tr.appendChild(tdPrice);
+	
+	let tdVideoconsole = document.createElement("td");
+	tdVideoconsole.innerHTML = game.printVideoconsole();
+	tr.appendChild(tdVideoconsole);
+	
+	let tdGenre = document.createElement("td");
+	tdGenre.innerHTML = game.printGenre();
+	tr.appendChild(tdGenre);
+	
+	
+	//Boton de alquiler
+	let rentButton = document.createElement("input");
+	//Cambio el color del boton en funcion de la disponibilidad
+	let colorButtonRent = null;
+	if (game.getAvailability() == Videogame.AVAILABILITY_AVAILABLE) {
+		colorButtonRent = "btn-success";	
+	}
+	else {
+		colorButtonRent = "btn-primary";
+	}
+
+	rentButton.setAttribute("class", 
+		"btn col font-weight-bold m-0 " + colorButtonRent + "");
+	rentButton.type = "button";
+	rentButton.value = game.printAvailability();
+	rentButton.addEventListener("click", 
+		function(){
+			rentVideogame(game.id);
+		} 
+	);	
+	//Boton de vender
+	
+	let sellButton = document.createElement("input");
+	if (game.getAvailability() == Videogame.AVAILABILITY_SOLD){
+		sellButton.value = game.printAvailability();
+		sellButton.setAttribute("disabled", true);
+	}
+	else {
+		sellButton.value = "Vender";
+		if (game.getAvailability() == Videogame.AVAILABILITY_RENT) {
+			sellButton.setAttribute("disabled", true);
+		}
+	}
+	sellButton.setAttribute("class", 
+		"btn btn-danger col font-weight-bold m-0");
+	sellButton.type = "button";
+	sellButton.addEventListener("click", 
+		function(){
+			sellVideogame(game.id);
+		} 
+	);
+	
+	let tdButtons = document.createElement("td");
+	
+	let divButtons = document.createElement("div");
+	divButtons.setAttribute("class", "col d-flex");
+	let divInputRent = document.createElement("div");
+	divInputRent.setAttribute("class", "col mr-2");
+	let divInputSell = document.createElement("div");
+	divInputSell.setAttribute("class", "col ml-2");
+	
+	if (game.getAvailability() != Videogame.AVAILABILITY_SOLD){
+		divButtons.appendChild(divInputRent);
+		divInputRent.appendChild(rentButton);
+	}
+	divButtons.appendChild(divInputSell);
+	divInputSell.appendChild(sellButton);
+	tdButtons.appendChild(divButtons);
+	tr.appendChild(tdButtons);
+
+	document.getElementById("table-tbody").appendChild(tr);
+	
+}
+
+function loadData(){
+	
+	let games = [
+		["Video	juego numero 2",10,2,1],
+		["Video	juego numero 7",40,2,1],
+		["Video	juego numero 3",19,2,1],
+		["Video	juego numero 1",12,1,2],
+		["Video	juego numero 4",20,3,2],
+		["Video	juego numero 13",49,1,1],
+		["Video	juego numero 6",18,1,3],
+		["Video	juego numero 11",11,2,3],
+		["Video	juego numero 15",38,3,3],
+		["Video	juego numero 9",28,2,2],
+		["Video	juego numero 10",52,3,3],
+		["Video	juego numero 14",23,3,2],
+		["Video	juego numero 8",39,1,2],
+		["Video	juego numero 12",17,2,1],
+		["Video	juego numero 5",32,3,3]];
+	
+	document.getElementById("table-head").style.display = "";	
+	for (let game of games){
+		let videogame = new Videogame(name, price, videoconsole, genre);
+		videogame.setAvailability(Videogame.AVAILABILITY_AVAILABLE);
+		videogame.name = game[0]; 
+		videogame.price = game[1]; 
+		videogame.videoconsole = game[2]; 
+		videogame.genre = game[3]; 
+		gamesLibrary.push(videogame);
+	}
+	
+	printLibrary();
+}
+
+function resetData(){
+	
+	let games = [];
+	gamesLibrary = games;
+	printLibrary();
+	document.getElementById("table-head").style.display = "none";	
+}
+
 
 
