@@ -21,7 +21,7 @@
 	</script>
 </head>
 <body>
-	<main class="container mt-5">
+	<main class="container mt-5 border rounded-lg">
 		<h1 class="text-center">
 			Videojuegos
 			<span><button type="button" class="btn btn-primary" onclick="loadData();">Load</button></span>
@@ -88,7 +88,7 @@
 			</form>
 		</section>	
 		<section id="table-section" class="container">
-			<table class="table mt-5 table-striped bg-white">
+			<table class="table mt-5 bg-white">
 				<thead id="table-head" class="thead-dark justify-content-between" style="display: none;">
 					<tr>
 						<th scope="col" id="head-edit">
@@ -96,37 +96,59 @@
 								<span class="text-left" id="head-id">Edit</span>
 							</div>	
 						</th>
-						<th scope="col" id="head-name" role="button" onclick="orderByName('name');">
+						<th scope="col" id="head-name">
 							<div class="d-flex justify-content-between align-items-center">
 								<span class="text-left">Nombre</span>
-								<i class="fas fa-sort-alpha-down" id="head-name-down"></i>
-								<i class="fas fa-sort-alpha-up" id="head-name-up" style="display: none;"></i>
+								<div  role="button" id="head-name-down" onclick="orderByName('name', 'asc');">
+									<i class="fas fa-sort-alpha-down" ></i>
+								</div>
+								<div role="button" id="head-name-up" style="display: none;" onclick="orderByName('name', 'desc');">
+									<i class="fas fa-sort-alpha-up" ></i>
+								</div>
 							</div>					
 						</th>
-						<th scope="col" id="head-price" role="button" onclick="orderByNumber('head-price');">
+						<th scope="col" id="head-price">
 							<div class="d-flex justify-content-between align-items-center">
 								<span class="text-left">Precio</span>
-								<i class="fas fa-sort-numeric-down" id="head-price-down"></i>
-								<i class="fas fa-sort-numeric-up" id="head-price-up" style="display: none;"></i>
+								<div  role="button" id="head-price-down" onclick="orderByName('price', 'asc');">
+									<i class="fas fa-sort-numeric-down" ></i>
+								</div>
+								<div role="button" id="head-price-up" style="display: none;" onclick="orderByName('price', 'desc');">
+									<i class="fas fa-sort-numeric-up" ></i>
+								</div>
 							</div>	
 						</th>
-						<th scope="col" id="head-videoconsole" role="button" onclick="orderByName('head-videoconsole');">
+						<th scope="col" id="head-videoconsole">
 							<div class="d-flex justify-content-between align-items-center">
 								<span class="text-left">Consola</span>
-								<i class="fas fa-sort-alpha-down" id="head-videoconsole-down"></i>
-								<i class="fas fa-sort-alpha-up" id="head-videoconsole-up" style="display: none;"></i>
+								<div  role="button" id="head-videoconsole-down" onclick="orderByName('videoconsole', 'asc');">
+									<i class="fas fa-sort-alpha-down" ></i>
+								</div>
+								<div role="button" id="head-videoconsole-up" style="display: none;" onclick="orderByName('videoconsole', 'desc');">
+									<i class="fas fa-sort-alpha-up" ></i>
+								</div>	
 							</div>	
 						</th>
-						<th scope="col" id="head-genre" role="button" onclick="orderByName('head-genre');">
+						<th scope="col" id="head-genre">
 							<div class="d-flex justify-content-between align-items-center">
 								<span class="text-left">Género</span>
-								<i class="fas fa-sort-alpha-down" id="head-genre-down"></i>
-								<i class="fas fa-sort-alpha-up" id="head-genre-up" style="display: none;"></i>
+								<div  role="button" id="head-genre-down" onclick="orderByName('genre', 'asc');">
+									<i class="fas fa-sort-alpha-down" ></i>
+								</div>
+								<div role="button" id="head-genre-up" style="display: none;" onclick="orderByName('genre', 'desc');">
+									<i class="fas fa-sort-alpha-up" ></i>
+								</div>							
 							</div>	
 						</th>
-						<th scope="col" id="head-operations">
-							<div class="d-flex justify-content-between align-items-center col-2">
-								<span class="text-left" id="head-id">Opcion</span>
+						<th scope="col" id="head-availability">
+							<div class="d-flex justify-content-between align-items-center">
+								<span class="text-left" id="head-id">Estado</span>
+								<div  role="button" id="head-availability-down" onclick="orderByName('availability', 'asc');">
+									<i class="fas fa-sort-alpha-down" ></i>
+								</div>
+								<div role="button" id="head-availability-up" style="display: none;" onclick="orderByName('availability', 'desc');">
+									<i class="fas fa-sort-alpha-up" ></i>
+								</div>
 							</div>	
 						</th>
 					</tr>

@@ -4,21 +4,21 @@ function loadData(){
 	resetData();
 	//Juego de datos
 	let games = [
-		["Video	juego numero 2",10,2,1],
-		["Video	juego numero 7",40,2,1],
-		["Video	juego numero 3",19,2,1],
-		["Video	juego numero 1",12,1,2],
-		["Video	juego numero 4",20,3,2],
-		["Video	juego numero 13",49,1,1],
-		["Video	juego numero 6",18,1,3],
-		["Video	juego numero 11",11,2,3],
-		["Video	juego numero 15",38,3,3],
-		["Video	juego numero 9",28,2,2],
-		["Video	juego numero 10",52,3,3],
-		["Video	juego numero 14",23,3,2],
-		["Video	juego numero 8",39,1,2],
-		["Video	juego numero 12",17,2,1],
-		["Video	juego numero 5",32,3,3]];
+		["Videojuego numero 2" , 10,2,1],
+		["Videojuego numero 7" , 40,2,1],
+		["Videojuego numero 3" , 19,2,1],
+		["Videojuego numero 1" , 12,1,2],
+		["Videojuego numero 4" , 20,3,2],
+		["Videojuego numero 13", 49,1,1],
+		["Videojuego numero 6" , 18,1,3],
+		["Videojuego numero 11", 11,2,3],
+		["Videojuego numero 15", 38,3,3],
+		["Videojuego numero 9" , 28,2,2],
+		["Videojuego numero 10", 52,3,3],
+		["Videojuego numero 14", 23,3,2],
+		["Videojuego numero 8" , 39,1,2],
+		["Videojuego numero 12", 17,2,1],
+		["Videojuego numero 5" , 32,3,3]];
 	
 	//Muestro la cabecera
 	document.getElementById("table-head").style.display = "";	

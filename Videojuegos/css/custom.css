@@ -3,16 +3,17 @@
 }
 
 body {
-  background: aliceblue;
+  background:STEELBLUE;
 }
 
 main {
-	
+	background: ALICEBLUE;
+	padding: 30px;
 
 }
 
 .bg-rented {
-	background: powderblue!important;
+	background: PALETURQUOISE!important;
 }
 
 .bg-sold {
