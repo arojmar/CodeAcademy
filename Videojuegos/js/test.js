@@ -1,8 +1,10 @@
-//Carga de pruebas
+/** MOCK DE DATOS **/
+
+/* FUNCION CARGA DE VIDEOJUEGOS EN LA LIBRERIA*/
 function loadData(){
 	
 	resetData();
-	//Juego de datos
+	// Juego de datos
 	let games = [
 		["Videojuego numero 2" , 10,2,1],
 		["Videojuego numero 7" , 40,2,1],
@@ -22,11 +24,12 @@ function loadData(){
 	
 	//Muestro la cabecera
 	document.getElementById("table-head").style.display = "";	
-	//cargo el array de juegos en la biblioteca
+	//se carga el array de juegos en la biblioteca
 	for (let game of games){
 		let videogame = new Videogame(name, price, videoconsole, genre);
-		//Genero un estado de disponibilidad aleatorio entre 1 y 3
+		//Se genera un estado de disponibilidad aleatorio entre 1 y 3
 		videogame.setAvailability(parseInt(Math.random() * 3) + 1);
+		// se añade el resto de informacion a cada campo de la biblioteca
 		videogame.name = game[0]; 
 		videogame.price = game[1]; 
 		videogame.videoconsole = game[2]; 
@@ -37,12 +40,12 @@ function loadData(){
 	printLibrary();
 }
 
-//Limpiar la biblioteca
+/* FUNCION LIMPIAR LA BIBLIOTECA */
 function resetData(){
-	//genero un array vacio que sera el que guarde en la biblioteca
+	// se genera un array vacio que sera el que guarde en la biblioteca
 	currentGameId = null;
 	gamesLibrary = [];
 	printLibrary();
-	//oculto la cabecera
+	// se oculta la cabecera
 	document.getElementById("table-head").style.display = "none";	
 }
