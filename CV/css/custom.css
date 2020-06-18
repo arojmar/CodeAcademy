@@ -1,0 +1,324 @@
+/** CV stylesheet **/
+/* font-family 'Lato'*/
+/* main color #FBFBFB */
+
+*, :after, :before {
+	box-sizing: border-box;
+}
+
+html, body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+	color: #939393;
+}
+
+/** HEADER **/
+header {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;	
+
+}
+
+html a {
+	text-decoration: none;
+	color: #f8bb10;
+}
+
+html a:hover, a:focus{
+	color: #DCC744;
+}
+
+/* Imagen CV */
+.photo-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;	
+	padding-right: 72px;
+	width: 36.5%;
+	background: #FBFBFB;
+	height: 100vh;
+}
+
+.photo img {
+	border-radius: 50%;
+	width: 240px;
+	height: 240px;
+}
+
+/* Name, social tags and profession */
+.data-container-global {
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-start;
+	width: calc(100% - 36.5%);
+	padding-left: 72px;
+	height: 100vh;
+	background: white;
+	
+}
+
+.data-container {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	width: 65%;
+	height: 60%;
+	padding-bottom: 20px;
+	
+}
+
+.first-name-social {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	width: 100%;
+	
+}
+
+.first-name {
+	display: block;
+	
+}
+
+
+header h1 {
+	font-size: 68px;
+	margin: 0;
+	color: #f8bb10;
+	text-transform: uppercase;
+}
+
+header h2 {
+	color: #939393;
+	font-size: 65px;
+	margin: 0;
+	margin-bottom: -20px;
+	font-weight: 200;
+}
+
+header h3 {
+	color: #939393;
+	font-size: 20px;
+	margin: 0;
+	margin-top: 20px;
+	font-weight: 100;
+}
+
+
+
+/* Social tags */
+.social {
+	display: flex;
+	font-size: 40px;
+	color: #E3E3E3;
+	
+}
+
+.social i {
+	padding: 3px;
+}
+
+.logo-social:hover, .logo-social:focus {
+	color: #e0a707;
+}
+
+/* Personal contact data */
+.contact-data {
+	display: block;
+	width: 100%;
+	padding: 20px 0px;
+	font-size: 14px;
+	color: #939393;
+}
+
+header hr {
+	border: 1px solid lightgrey;
+}
+
+/* Lists of contact details */
+header ul {
+	display: flex;
+	justify-content: space-around;
+	margin: 0;
+	padding: 7px 0px;
+}
+
+header ul li {
+	display: inline-block;
+	width: 25%;
+	padding: 0;
+}
+
+.contact-data-title {
+	display: block;
+	width: 100%;
+	font-weight: 600;
+	padding-top: 15px;
+}
+
+.contact-data-content {
+	display: block;
+	width: 100%;
+	font-weight: 400;
+	padding-bottom: 15px;
+}
+
+.contact-data-content a {
+	text-decoration: none;
+	color: #939393;
+}
+
+.contact-data-content a:hover, a:focus {
+	text-decoration: none;
+	color: #e0a707;
+}
+
+
+/** MAIN **/
+
+
+main {
+
+	background-color: pink;
+}
+
+/* SECTIONS */
+.main-section-container {
+	display: inline-flex;
+}
+
+
+.section-title {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;	
+	padding-right: 72px;
+	padding-top: 44px;
+	width: 36.5%;	
+}
+
+.section-title.dark-version {
+	background: #F6F6F6;
+}
+
+.section-title.light-version {
+	background: #FBFBFB;
+}
+
+.section-content {
+	display: flex;
+    flex-flow: column wrap;
+    width: calc(100% - 36.5%);
+    padding-left: 72px;
+    justify-content: center;
+}
+
+.section-content.dark-version {
+	background: #FBFBFB;
+}
+
+.section-content.light-version {
+	background: white;
+}
+/* SECTION INTRO */
+
+.title-container {
+	display: block;
+	width: 100%;
+}
+
+
+.section-title h4 {
+	font-size: 17px;
+	text-align: right;
+	color: #727272;
+	font-weight: 600;
+}
+
+.section-title h5 {
+	text-align: right;
+	width: 100%;
+	color: #939393;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+
+
+.content-container {
+	display: inline-block;
+    width: 65%;
+    padding: 44px 0px;
+}
+
+.content-container.intro {
+	display: inline-block;
+}
+
+
+.intro-text {
+	display: block;
+    font-size: 17px;
+    color: #939393;
+    line-height: 1.7;
+}
+
+
+#expertise-content .content-container {
+	display: flex;
+    flex-flow: row wrap;
+}
+
+.card {
+	display: block;
+	width: 50%;
+	position: relative;
+	padding-left: 37px;
+	font-size: 14px;
+    color: #939393;
+    line-height: 1.7;
+}
+
+.card h4 {
+	font-size: 17px;
+	margin-bottom: 0px;
+	color: #727272;
+}
+
+.card p {
+	margin: 4px 0px 14px 0px;
+}
+
+.card.right {
+	padding-left: calc(37px + 30px);
+}
+
+.card.left {
+	padding-right: 30px;
+}
+
+.expertise-number-card {
+	position: absolute;
+	margin-left: -37px;
+	font-size: 17px;
+	color: #f8bb10!important;
+}
+
+#skills-content .content-container {
+	display: flex;
+    flex-flow: row wrap;
+	
+}
+
+.skills-left-column, .skills-right-column {
+	display: inline;
+	width: 50%;
+}
+.skill-info {
+	display: block;
+	width: 100%;
+}
